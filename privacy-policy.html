@@ -502,7 +502,7 @@
                 <img class="logo" src="assets/logo.png" alt="Orbit Hopper">
                 <h1>Orbit Hopper</h1>
                 <p class="tagline">Privacy Policy</p>
-                <p class="effective-date">Effective date: March 1, 2026</p>
+                <p class="effective-date">Effective date: March 22, 2026</p>
             </div>
 
             <!-- Screenshot Carousel -->
@@ -521,17 +521,30 @@
             <div class="card">
                 <h2>Overview</h2>
                 <p>Orbit Hopper is a free mobile arcade game developed by Catalin Lazar. Your privacy matters, and this policy explains what data is collected, how it's used, and your choices.</p>
-                <p>Orbit Hopper does not require an account, does not collect personal information directly, and does not store any data on external servers controlled by the developer.</p>
+                <p>Orbit Hopper does not require an account and does not collect personal information directly. Game progress is backed up anonymously to the cloud so it can be restored if you reinstall the app.</p>
             </div>
 
             <div class="card">
                 <h2>Data Stored on Your Device</h2>
-                <p>The following data is stored locally on your device only and is never transmitted:</p>
+                <p>The following data is stored locally on your device:</p>
                 <ul>
-                    <li>High score and game statistics</li>
+                    <li>High scores, best times, and game statistics</li>
+                    <li>Unlocked rockets and companions</li>
                     <li>Sound, music, and haptic preferences</li>
                 </ul>
-                <p>This data is cleared if you uninstall the app.</p>
+                <p>Settings (sound, music, haptics) are stored on your device only and are cleared if you uninstall the app.</p>
+            </div>
+
+            <div class="card">
+                <h2>Cloud Backup</h2>
+                <p>To protect your progress, Orbit Hopper backs up game data to the cloud using Firebase. This allows your scores, statistics, and unlocks to be restored if you reinstall the app on the same device.</p>
+                <p>Cloud backup works as follows:</p>
+                <ul>
+                    <li>An anonymous account is created automatically — no email, username, or personal information is required.</li>
+                    <li>Game progress is uploaded only when you achieve a new personal record (high score, best time, or furthest planet reached).</li>
+                    <li>Backed-up data includes scores, statistics, achievement progress, and unlocked items. It does not include settings or ad-related data.</li>
+                </ul>
+                <p>Cloud data is stored in Firebase Firestore (EU region) and is associated only with an anonymous identifier — not with your name, email, or any other personal information.</p>
             </div>
 
             <div class="card">
@@ -556,7 +569,8 @@
                 <h2>Your Choices</h2>
                 <ul>
                     <li><strong>Ad tracking:</strong> You can limit ad personalization through your device settings (iOS: Settings &gt; Privacy &gt; Tracking; Android: Settings &gt; Google &gt; Ads).</li>
-                    <li><strong>Data deletion:</strong> Uninstalling the app removes all locally stored data.</li>
+                    <li><strong>Reset all data:</strong> You can erase all progress (local and cloud) from within the app. Go to Settings &gt; Reset All Progress. This permanently deletes your scores, statistics, unlocks, and cloud backup.</li>
+                    <li><strong>Uninstall:</strong> Uninstalling the app removes all locally stored data. Your cloud backup will remain so progress can be restored on reinstall.</li>
                 </ul>
             </div>
 
