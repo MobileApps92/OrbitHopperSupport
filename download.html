@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orbit Hopper - Download</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="carousel.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-deep: #000018;
+            --bg-mid: #00002E;
+            --accent-primary: #A855F7;
+            --accent-primary-dark: #8B3FD4;
+            --accent-cyan: #00E5FF;
+            --accent-purple: #A855F7;
+            --text-primary: #e8e8f0;
+            --text-secondary: #9a9ac0;
+            --text-muted: #5a5a7e;
+            --card-bg: rgba(8, 8, 48, 0.6);
+            --card-border: rgba(168,85,247,0.12);
+        }
+
+        body {
+            font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-deep);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* ===== PARALLAX STARFIELD ===== */
+        .stars-layer {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .stars-far, .stars-mid, .stars-near {
+            position: absolute;
+            inset: -50%;
+            width: 200%;
+            height: 200%;
+        }
+        .star {
+            position: absolute;
+            border-radius: 50%;
+            background: white;
+        }
+        .stars-far .star {
+            width: 1px; height: 1px;
+            opacity: 0.4;
+            animation: twinkle-slow 6s ease-in-out infinite alternate;
+        }
+        .stars-mid .star {
+            width: 1.5px; height: 1.5px;
+            opacity: 0.6;
+            animation: twinkle-mid 4s ease-in-out infinite alternate;
+        }
+        .stars-near .star {
+            width: 2px; height: 2px;
+            opacity: 0.8;
+            animation: twinkle-fast 3s ease-in-out infinite alternate;
+        }
+        .star.colored-orange { background: var(--accent-primary); }
+        .star.colored-cyan { background: var(--accent-cyan); }
+        .star.colored-purple { background: var(--accent-purple); }
+
+        @keyframes twinkle-slow {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+        @keyframes twinkle-mid {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 0.8; }
+        }
+        @keyframes twinkle-fast {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* ===== NEBULA GLOW ===== */
+        .nebula {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .nebula-1 {
+            width: 500px; height: 500px;
+            top: -150px; right: -150px;
+            background: radial-gradient(circle, rgba(168,85,247,0.08) 0%, transparent 70%);
+        }
+        .nebula-2 {
+            width: 400px; height: 400px;
+            bottom: -100px; left: -120px;
+            background: radial-gradient(circle, rgba(0,229,255,0.06) 0%, transparent 70%);
+        }
+        .nebula-3 {
+            width: 300px; height: 300px;
+            top: 40%; left: 50%;
+            transform: translateX(-50%);
+            background: radial-gradient(circle, rgba(168,85,247,0.04) 0%, transparent 70%);
+        }
+
+        /* ===== FLOATING PLANETS (real game assets) ===== */
+        .scene-planet {
+            position: fixed;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .scene-planet img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .planet-sun {
+            width: 160px; height: 160px;
+            top: 5%; right: -30px;
+            opacity: 0.18;
+            animation: float-slow 20s ease-in-out infinite;
+            filter: drop-shadow(0 0 30px rgba(168,85,247,0.3));
+        }
+        .planet-earth {
+            width: 110px; height: 110px;
+            bottom: 10%; left: -25px;
+            opacity: 0.16;
+            animation: float-slow 25s ease-in-out infinite reverse;
+            filter: drop-shadow(0 0 20px rgba(0,229,255,0.2));
+        }
+        .planet-neon {
+            width: 75px; height: 75px;
+            top: 50%; right: 4%;
+            opacity: 0.14;
+            animation: float-slow 18s ease-in-out infinite;
+            filter: drop-shadow(0 0 15px rgba(168,85,247,0.2));
+        }
+        .planet-lava {
+            width: 55px; height: 55px;
+            top: 28%; left: 6%;
+            opacity: 0.12;
+            animation: float-slow 15s ease-in-out infinite;
+            filter: drop-shadow(0 0 12px rgba(255,100,0,0.2));
+        }
+        .planet-crystal {
+            width: 45px; height: 45px;
+            top: 75%; right: 12%;
+            opacity: 0.10;
+            animation: float-slow 22s ease-in-out 3s infinite;
+            filter: drop-shadow(0 0 10px rgba(0,150,255,0.15));
+        }
+        .planet-ice {
+            width: 50px; height: 50px;
+            top: 15%; left: 15%;
+            opacity: 0.10;
+            animation: float-slow 19s ease-in-out 1s infinite reverse;
+            filter: drop-shadow(0 0 10px rgba(180,220,255,0.15));
+        }
+
+        @keyframes float-slow {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-15px) rotate(1deg); }
+            66% { transform: translateY(10px) rotate(-1deg); }
+        }
+
+        /* ===== FLOATING ROCKET ===== */
+        .scene-rocket {
+            position: fixed;
+            z-index: 0;
+            pointer-events: none;
+            animation: rocket-drift 30s linear infinite;
+            opacity: 0.18;
+        }
+        .scene-rocket img {
+            width: 44px;
+            height: auto;
+            transform: rotate(45deg);
+            filter: drop-shadow(0 0 10px rgba(168,85,247,0.5));
+        }
+        .scene-rocket .rocket-trail {
+            position: absolute;
+            bottom: 8px; left: 50%;
+            width: 4px; height: 24px;
+            background: linear-gradient(to bottom, rgba(168,85,247,0.7), rgba(0,229,255,0.3), transparent);
+            transform: translateX(-50%) rotate(-30deg);
+            transform-origin: top center;
+            filter: blur(2px);
+            border-radius: 2px;
+        }
+
+        @keyframes rocket-drift {
+            0% { top: 85%; left: -5%; opacity: 0; }
+            5% { opacity: 0.18; }
+            90% { opacity: 0.18; }
+            100% { top: -10%; left: 105%; opacity: 0; }
+        }
+
+        /* ===== SHOOTING STARS ===== */
+        .shooting-star {
+            position: fixed;
+            pointer-events: none;
+            z-index: 0;
+            width: 80px;
+            height: 1px;
+            background: linear-gradient(to right, rgba(255,255,255,0.8), transparent);
+            opacity: 0;
+        }
+        .shooting-star-1 {
+            top: 15%; left: 20%;
+            transform: rotate(-35deg);
+            animation: shoot 8s 2s ease-out infinite;
+        }
+        .shooting-star-2 {
+            top: 40%; left: 60%;
+            transform: rotate(45deg);
+            animation: shoot 12s 6s ease-out infinite;
+        }
+        .shooting-star-3 {
+            top: 70%; left: 10%;
+            transform: rotate(-40deg);
+            animation: shoot 10s 9s ease-out infinite;
+        }
+
+        @keyframes shoot {
+            0% { opacity: 0; transform: rotate(-35deg) translateX(0); }
+            2% { opacity: 1; }
+            8% { opacity: 0; transform: rotate(-35deg) translateX(300px); }
+            100% { opacity: 0; }
+        }
+
+        /* ===== ORBITAL RINGS ===== */
+        .orbit-ring {
+            position: fixed;
+            border: 1px solid rgba(168,85,247,0.04);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            animation: orbit-spin 60s linear infinite;
+        }
+        .orbit-ring-1 {
+            width: 600px; height: 600px;
+            top: -200px; right: -200px;
+        }
+        .orbit-ring-2 {
+            width: 400px; height: 400px;
+            bottom: -100px; left: -100px;
+            animation-duration: 45s;
+            animation-direction: reverse;
+            border-color: rgba(0,229,255,0.04);
+        }
+
+        @keyframes orbit-spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* ===== COMPANION CHARACTERS (real game assets) ===== */
+        .companion {
+            position: fixed;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .companion img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .companion-1 {
+            width: 45px; height: 45px;
+            top: 18%; left: 3%;
+            opacity: 0.12;
+            animation: float-companion 12s ease-in-out infinite;
+            filter: drop-shadow(0 0 6px rgba(168,85,247,0.3));
+        }
+        .companion-2 {
+            width: 40px; height: 40px;
+            top: 62%; right: 5%;
+            opacity: 0.10;
+            animation: float-companion 16s ease-in-out infinite reverse;
+            filter: drop-shadow(0 0 6px rgba(0,229,255,0.3));
+        }
+        .companion-3 {
+            width: 38px; height: 38px;
+            top: 82%; left: 12%;
+            opacity: 0.10;
+            animation: float-companion 14s ease-in-out 2s infinite;
+            filter: drop-shadow(0 0 6px rgba(168,85,247,0.3));
+        }
+        @keyframes float-companion {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-20px) scale(1.1); }
+        }
+
+        /* ===== PAGE LAYOUT ===== */
+        .page-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 640px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+        }
+
+        /* ===== NAVIGATION ===== */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            text-align: left;
+            margin-bottom: 2rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            float: left;
+        }
+        .back-link:hover {
+            color: var(--accent-cyan);
+            transform: translateX(-3px);
+            text-decoration: none;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            clear: both;
+            padding-top: 1rem;
+            margin-bottom: 2.5rem;
+        }
+        .logo {
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 1.25rem;
+            border-radius: 24px;
+            box-shadow: 0 8px 32px rgba(168,85,247,0.2), 0 0 0 1px rgba(168,85,247,0.1);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        .logo:hover {
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 12px 40px rgba(168,85,247,0.3), 0 0 0 1px rgba(168,85,247,0.2);
+        }
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+            background: linear-gradient(135deg, #C084FC, #A855F7, #00E5FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+        }
+        .tagline {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.5px;
+        }
+
+        /* ===== CARDS ===== */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 1.25rem;
+            text-align: center;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(168,85,247,0.2), transparent);
+        }
+        .card:hover {
+            border-color: rgba(168,85,247,0.22);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3), 0 0 0 1px rgba(168,85,247,0.08);
+        }
+        .card p {
+            line-height: 1.7;
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+        }
+
+        /* ===== REDIRECT STATUS ===== */
+        .redirect-msg {
+            font-size: 1.05rem;
+            color: var(--accent-cyan);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        /* ===== STORE BUTTONS ===== */
+        .store-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            align-items: center;
+            margin-top: 0.5rem;
+        }
+        .store-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0;
+            border-radius: 16px;
+            text-decoration: none;
+            width: 280px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+        .store-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            text-decoration: none;
+        }
+        .store-btn .btn-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 56px;
+            height: 56px;
+            flex-shrink: 0;
+        }
+        .store-btn .btn-icon svg {
+            width: 26px;
+            height: 26px;
+        }
+        .store-btn .btn-text {
+            display: flex;
+            flex-direction: column;
+            padding: 10px 16px 10px 0;
+            line-height: 1.2;
+            text-align: left;
+        }
+        .store-btn .btn-label {
+            font-size: 0.7rem;
+            font-weight: 400;
+            opacity: 0.8;
+            letter-spacing: 0.3px;
+        }
+        .store-btn .btn-store-name {
+            font-size: 1.15rem;
+            font-weight: 700;
+            letter-spacing: -0.2px;
+        }
+
+        .btn-appstore {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: #ffffff;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.06);
+        }
+        .btn-appstore:hover {
+            box-shadow: 0 8px 30px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.12), 0 0 20px rgba(255,255,255,0.05);
+        }
+        .btn-appstore .btn-icon {
+            background: rgba(255,255,255,0.06);
+        }
+        .btn-appstore .btn-icon svg {
+            fill: #ffffff;
+        }
+
+        .btn-playstore {
+            background: linear-gradient(135deg, #0a2e1a, #0d3320);
+            color: #ffffff;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 0 1px rgba(61,220,132,0.12);
+        }
+        .btn-playstore:hover {
+            box-shadow: 0 8px 30px rgba(0,0,0,0.5), 0 0 0 1px rgba(61,220,132,0.25), 0 0 20px rgba(61,220,132,0.08);
+        }
+        .btn-playstore .btn-icon {
+            background: rgba(61,220,132,0.1);
+        }
+        .btn-playstore .btn-icon svg {
+            fill: #3DDC84;
+        }
+
+        .or-divider {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        a {
+            color: var(--accent-cyan);
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            margin-top: 1.5rem;
+            padding-bottom: 2rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            border: 2px solid var(--accent-cyan);
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            vertical-align: middle;
+            margin-right: 0.5rem;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        #redirect-status {
+            display: none;
+        }
+
+        .hint-card {
+            text-align: left;
+        }
+        .hint-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 640px) {
+            h1 { font-size: 2.2rem; }
+            .card { padding: 1.5rem; }
+            .store-btn { width: 100%; max-width: 300px; }
+            .planet-sun { width: 110px; height: 110px; }
+            .planet-earth { width: 80px; height: 80px; }
+            .planet-neon { width: 50px; height: 50px; }
+            .planet-lava { width: 40px; height: 40px; }
+            .planet-crystal { width: 30px; height: 30px; }
+            .planet-ice { width: 35px; height: 35px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Parallax Starfield -->
+    <div class="stars-layer">
+        <div class="stars-far" id="stars-far"></div>
+        <div class="stars-mid" id="stars-mid"></div>
+        <div class="stars-near" id="stars-near"></div>
+    </div>
+
+    <!-- Nebula Glows -->
+    <div class="nebula nebula-1"></div>
+    <div class="nebula nebula-2"></div>
+    <div class="nebula nebula-3"></div>
+
+    <!-- Orbital Rings -->
+    <div class="orbit-ring orbit-ring-1"></div>
+    <div class="orbit-ring orbit-ring-2"></div>
+
+    <!-- Floating Planets (real game assets) -->
+    <div class="scene-planet planet-sun"><img src="assets/sun.png" alt=""></div>
+    <div class="scene-planet planet-earth"><img src="assets/earth.png" alt=""></div>
+    <div class="scene-planet planet-neon"><img src="assets/planets/neon.png" alt=""></div>
+    <div class="scene-planet planet-lava"><img src="assets/planets/lava.png" alt=""></div>
+    <div class="scene-planet planet-crystal"><img src="assets/planets/crystal.png" alt=""></div>
+    <div class="scene-planet planet-ice"><img src="assets/planets/ice.png" alt=""></div>
+
+    <!-- Floating Rocket -->
+    <div class="scene-rocket">
+        <img src="assets/rockets/rocket_commander.png" alt="">
+        <div class="rocket-trail"></div>
+    </div>
+
+    <!-- Shooting Stars -->
+    <div class="shooting-star shooting-star-1"></div>
+    <div class="shooting-star shooting-star-2"></div>
+    <div class="shooting-star shooting-star-3"></div>
+
+    <!-- Companions (real game assets) -->
+    <div class="companion companion-1"><img src="assets/companions/companion_phoenix.png" alt=""></div>
+    <div class="companion companion-2"><img src="assets/companions/companion_orbiter.png" alt=""></div>
+    <div class="companion companion-3"><img src="assets/companions/companion_sentinel.png" alt=""></div>
+
+    <!-- Page Content -->
+    <div class="page-wrapper">
+        <div class="container">
+            <a class="back-link" href="contact.html">&larr; Contact</a>
+
+            <div class="hero">
+                <img class="logo" src="assets/logo.png" alt="Orbit Hopper">
+                <h1>Orbit Hopper</h1>
+                <p class="tagline">Download the Game</p>
+            </div>
+
+            <!-- Screenshot Carousel -->
+            <div class="carousel-section">
+                <div class="carousel-track" id="carousel-track">
+                    <div class="carousel-item"><div class="carousel-frame"><picture><source type="image/webp" srcset="assets/screenshot-1-540w.webp"><img src="assets/screenshot-1.png" alt="Master Gravity" loading="lazy"></picture></div></div>
+                    <div class="carousel-item"><div class="carousel-frame"><picture><source type="image/webp" srcset="assets/screenshot-2-540w.webp"><img src="assets/screenshot-2.png" alt="Explore Secret Worlds" loading="lazy"></picture></div></div>
+                    <div class="carousel-item"><div class="carousel-frame"><picture><source type="image/webp" srcset="assets/screenshot-3-540w.webp"><img src="assets/screenshot-3.png" alt="Reach Higher" loading="lazy"></picture></div></div>
+                    <div class="carousel-item"><div class="carousel-frame"><picture><source type="image/webp" srcset="assets/screenshot-4-540w.webp"><img src="assets/screenshot-4.png" alt="Unlock Your Potential" loading="lazy"></picture></div></div>
+                    <div class="carousel-item"><div class="carousel-frame"><picture><source type="image/webp" srcset="assets/screenshot-5-540w.webp"><img src="assets/screenshot-5.png" alt="Take Risks" loading="lazy"></picture></div></div>
+                    <div class="carousel-item"><div class="carousel-frame"><picture><source type="image/webp" srcset="assets/screenshot-6-540w.webp"><img src="assets/screenshot-6.png" alt="Find New Friends" loading="lazy"></picture></div></div>
+                    <div class="carousel-item"><div class="carousel-frame"><picture><source type="image/webp" srcset="assets/screenshot-7-540w.webp"><img src="assets/screenshot-7.png" alt="Find Your Way Home" loading="lazy"></picture></div></div>
+                </div>
+            </div>
+
+            <div class="card">
+                <p id="redirect-status" class="redirect-msg">
+                    <span class="spinner"></span> Redirecting you to the store...
+                </p>
+
+                <p style="margin-bottom: 1.5rem;">Master gravity across 11 themed worlds, unlock rockets and companions, discover secret zones, and compete on global leaderboards. Free to play.</p>
+
+                <div class="store-buttons">
+                    <a id="btn-appstore" class="store-btn btn-appstore" href="#" target="_blank" rel="noopener">
+                        <span class="btn-icon">
+                            <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                        </span>
+                        <span class="btn-text">
+                            <span class="btn-label">Download on</span>
+                            <span class="btn-store-name">App Store</span>
+                        </span>
+                    </a>
+                    <span class="or-divider">or</span>
+                    <a id="btn-playstore" class="store-btn btn-playstore" href="#" target="_blank" rel="noopener">
+                        <span class="btn-icon">
+                            <svg viewBox="0 0 24 24"><path d="M17.523 2.047a.666.666 0 0 0-.324.079c-.073.04-7.322 4.196-7.322 4.196l5.088 4.428 3.94-3.389c.243-.145 1.66-.936 1.66-.936a.673.673 0 0 0 .326-.572.664.664 0 0 0-.338-.586s-2.882-1.651-3.03-2.22zM8.81 6.932L2.196 3.125a.49.49 0 0 0-.089-.039A.664.664 0 0 0 1.4 3.57v16.86a.666.666 0 0 0 .373.597.66.66 0 0 0 .302.074.654.654 0 0 0 .324-.087l6.62-3.812-1.576-1.373 1.576-1.355-1.576-1.373 1.576-1.355zM9.95 7.592l4.49 3.912-1.574 1.354 1.574 1.373-1.574 1.354 1.574 1.373-4.49 3.912-1.14-.993 1.576-1.355-1.576-1.373 1.576-1.355-1.576-1.373 1.576-1.354-1.576-1.374z" style="display:none"/><path d="M6 18c0 .55.45 1 1 1h1v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h2v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h1c.55 0 1-.45 1-1V7H6v11zM3.5 7C2.67 7 2 7.67 2 8.5v7c0 .83.67 1.5 1.5 1.5S5 16.33 5 15.5v-7C5 7.67 4.33 7 3.5 7zm17 0c-.83 0-1.5.67-1.5 1.5v7c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-7c0-.83-.67-1.5-1.5-1.5zm-4.97-5.84l1.3-2.17a.3.3 0 0 0-.1-.4.3.3 0 0 0-.41.1l-1.32 2.2C13.78 1.32 12.92 1.07 12 1.07s-1.78.25-2.59.82L8.09.69a.3.3 0 0 0-.41-.1.3.3 0 0 0-.1.41l1.3 2.17C7.29 4.08 6.2 5.4 6.06 7h11.89c-.15-1.6-1.24-2.92-2.42-3.84zM10 5H9V4h1v1zm5 0h-1V4h1v1z"/></svg>
+                        </span>
+                        <span class="btn-text">
+                            <span class="btn-label">Get it on</span>
+                            <span class="btn-store-name">Google Play</span>
+                        </span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="card hint-card">
+                <p>
+                    Not redirected? Tap the button above for your platform. If you're on a desktop, scan the QR code on the store page from your phone.
+                </p>
+            </div>
+
+            <p class="footer">&copy; 2026 Catalin Lazar. All rights reserved.</p>
+        </div>
+    </div>
+
+    <script>
+        // Store redirect logic
+        var APP_STORE_URL = 'https://apps.apple.com/us/app/orbit-hopper/id6759779021';
+        var PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.orbithop.orbit_hop';
+
+        var ua = navigator.userAgent || navigator.vendor || window.opera;
+        var isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+        var isAndroid = /android/i.test(ua);
+
+        document.getElementById('btn-appstore').href = APP_STORE_URL;
+        document.getElementById('btn-playstore').href = PLAY_STORE_URL;
+
+        function redirectToStore(url) {
+            var status = document.getElementById('redirect-status');
+            status.style.display = 'block';
+            setTimeout(function() {
+                window.location.href = url;
+            }, 1500);
+            // Hide the indicator after redirect (user may return via back button)
+            setTimeout(function() {
+                status.style.display = 'none';
+            }, 3000);
+        }
+
+        if (isIOS && APP_STORE_URL !== '#') {
+            redirectToStore(APP_STORE_URL);
+        } else if (isAndroid && PLAY_STORE_URL !== '#') {
+            redirectToStore(PLAY_STORE_URL);
+        }
+    </script>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <img id="lightbox-img" src="" alt="Screenshot">
+    </div>
+
+    <script src="carousel.js"></script>
+</body>
+</html>

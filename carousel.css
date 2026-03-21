@@ -1,0 +1,122 @@
+/* ===== SCREENSHOT CAROUSEL ===== */
+.carousel-section {
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+    position: relative;
+    padding: 1rem 0;
+}
+.carousel-section::before,
+.carousel-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 80px;
+    z-index: 2;
+    pointer-events: none;
+}
+.carousel-section::before {
+    left: 0;
+    background: linear-gradient(to right, var(--bg-deep), transparent);
+}
+.carousel-section::after {
+    right: 0;
+    background: linear-gradient(to left, var(--bg-deep), transparent);
+}
+
+.carousel-track {
+    display: flex;
+    gap: 1.5rem;
+    animation: carousel-scroll 40s linear infinite;
+    width: max-content;
+    cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+.carousel-track.paused {
+    animation-play-state: paused;
+}
+.carousel-track.dragging {
+    cursor: grabbing;
+}
+
+.carousel-item {
+    flex-shrink: 0;
+    width: 180px;
+    text-align: center;
+}
+.carousel-frame {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 2px solid rgba(255,255,255,0.08);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(168,85,247,0.06);
+    transition: all 0.4s ease;
+    aspect-ratio: 1242 / 2688;
+    cursor: pointer;
+}
+.carousel-frame:hover {
+    border-color: rgba(168,85,247,0.25);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.6), 0 0 20px rgba(168,85,247,0.1);
+    transform: scale(1.03);
+}
+.carousel-frame picture {
+    display: contents;
+}
+.carousel-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    pointer-events: none;
+    image-rendering: -webkit-optimize-contrast;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+@keyframes carousel-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* ===== LIGHTBOX ===== */
+.lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(0,0,0,0.92);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.lightbox.active {
+    display: flex;
+    opacity: 1;
+}
+.lightbox img {
+    max-height: 90vh;
+    max-width: 90vw;
+    border-radius: 20px;
+    box-shadow: 0 0 60px rgba(168,85,247,0.2);
+    object-fit: contain;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+.lightbox.active img {
+    transform: scale(1);
+}
+
+/* ===== CAROUSEL RESPONSIVE ===== */
+@media (max-width: 640px) {
+    .carousel-item { width: 150px; }
+    .carousel-section::before,
+    .carousel-section::after { width: 40px; }
+}

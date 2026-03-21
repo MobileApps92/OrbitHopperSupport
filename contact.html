@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orbit Hopper - Contact</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="carousel.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-deep: #000018;
+            --bg-mid: #00002E;
+            --accent-primary: #A855F7;
+            --accent-primary-dark: #8B3FD4;
+            --accent-cyan: #00E5FF;
+            --accent-purple: #A855F7;
+            --text-primary: #e8e8f0;
+            --text-secondary: #9a9ac0;
+            --text-muted: #5a5a7e;
+            --card-bg: rgba(8, 8, 48, 0.6);
+            --card-border: rgba(168,85,247,0.12);
+        }
+
+        body {
+            font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-deep);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* ===== PARALLAX STARFIELD ===== */
+        .stars-layer {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .stars-far, .stars-mid, .stars-near {
+            position: absolute;
+            inset: -50%;
+            width: 200%;
+            height: 200%;
+        }
+        .star {
+            position: absolute;
+            border-radius: 50%;
+            background: white;
+        }
+        .stars-far .star {
+            width: 1px; height: 1px;
+            opacity: 0.4;
+            animation: twinkle-slow 6s ease-in-out infinite alternate;
+        }
+        .stars-mid .star {
+            width: 1.5px; height: 1.5px;
+            opacity: 0.6;
+            animation: twinkle-mid 4s ease-in-out infinite alternate;
+        }
+        .stars-near .star {
+            width: 2px; height: 2px;
+            opacity: 0.8;
+            animation: twinkle-fast 3s ease-in-out infinite alternate;
+        }
+        .star.colored-orange { background: var(--accent-primary); }
+        .star.colored-cyan { background: var(--accent-cyan); }
+        .star.colored-purple { background: var(--accent-purple); }
+
+        @keyframes twinkle-slow {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+        @keyframes twinkle-mid {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 0.8; }
+        }
+        @keyframes twinkle-fast {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* ===== NEBULA GLOW ===== */
+        .nebula {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .nebula-1 {
+            width: 500px; height: 500px;
+            top: -150px; right: -150px;
+            background: radial-gradient(circle, rgba(168,85,247,0.08) 0%, transparent 70%);
+        }
+        .nebula-2 {
+            width: 400px; height: 400px;
+            bottom: -100px; left: -120px;
+            background: radial-gradient(circle, rgba(0,229,255,0.06) 0%, transparent 70%);
+        }
+        .nebula-3 {
+            width: 300px; height: 300px;
+            top: 40%; left: 50%;
+            transform: translateX(-50%);
+            background: radial-gradient(circle, rgba(168,85,247,0.04) 0%, transparent 70%);
+        }
+
+        /* ===== FLOATING PLANETS ===== */
+        .scene-planet {
+            position: fixed;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .scene-planet img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .planet-sun {
+            width: 160px; height: 160px;
+            top: 5%; right: -30px;
+            opacity: 0.18;
+            animation: float-slow 20s ease-in-out infinite;
+            filter: drop-shadow(0 0 30px rgba(168,85,247,0.3));
+        }
+        .planet-earth {
+            width: 110px; height: 110px;
+            bottom: 10%; left: -25px;
+            opacity: 0.16;
+            animation: float-slow 25s ease-in-out infinite reverse;
+            filter: drop-shadow(0 0 20px rgba(0,229,255,0.2));
+        }
+        .planet-neon {
+            width: 75px; height: 75px;
+            top: 50%; right: 4%;
+            opacity: 0.14;
+            animation: float-slow 18s ease-in-out infinite;
+            filter: drop-shadow(0 0 15px rgba(168,85,247,0.2));
+        }
+        .planet-lava {
+            width: 55px; height: 55px;
+            top: 28%; left: 6%;
+            opacity: 0.12;
+            animation: float-slow 15s ease-in-out infinite;
+            filter: drop-shadow(0 0 12px rgba(255,100,0,0.2));
+        }
+        .planet-crystal {
+            width: 45px; height: 45px;
+            top: 75%; right: 12%;
+            opacity: 0.10;
+            animation: float-slow 22s ease-in-out 3s infinite;
+            filter: drop-shadow(0 0 10px rgba(0,150,255,0.15));
+        }
+        .planet-ice {
+            width: 50px; height: 50px;
+            top: 15%; left: 15%;
+            opacity: 0.10;
+            animation: float-slow 19s ease-in-out 1s infinite reverse;
+            filter: drop-shadow(0 0 10px rgba(180,220,255,0.15));
+        }
+
+        @keyframes float-slow {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-15px) rotate(1deg); }
+            66% { transform: translateY(10px) rotate(-1deg); }
+        }
+
+        /* ===== FLOATING ROCKET ===== */
+        .scene-rocket {
+            position: fixed;
+            z-index: 0;
+            pointer-events: none;
+            animation: rocket-drift 30s linear infinite;
+            opacity: 0.18;
+        }
+        .scene-rocket img {
+            width: 44px;
+            height: auto;
+            transform: rotate(45deg);
+            filter: drop-shadow(0 0 10px rgba(168,85,247,0.5));
+        }
+        .scene-rocket .rocket-trail {
+            position: absolute;
+            bottom: 8px; left: 50%;
+            width: 4px; height: 24px;
+            background: linear-gradient(to bottom, rgba(168,85,247,0.7), rgba(0,229,255,0.3), transparent);
+            transform: translateX(-50%) rotate(-30deg);
+            transform-origin: top center;
+            filter: blur(2px);
+            border-radius: 2px;
+        }
+
+        @keyframes rocket-drift {
+            0% { top: 85%; left: -5%; opacity: 0; }
+            5% { opacity: 0.18; }
+            90% { opacity: 0.18; }
+            100% { top: -10%; left: 105%; opacity: 0; }
+        }
+
+        /* ===== SHOOTING STARS ===== */
+        .shooting-star {
+            position: fixed;
+            pointer-events: none;
+            z-index: 0;
+            width: 80px;
+            height: 1px;
+            background: linear-gradient(to right, rgba(255,255,255,0.8), transparent);
+            opacity: 0;
+        }
+        .shooting-star-1 {
+            top: 15%; left: 20%;
+            transform: rotate(-35deg);
+            animation: shoot 8s 2s ease-out infinite;
+        }
+        .shooting-star-2 {
+            top: 40%; left: 60%;
+            transform: rotate(45deg);
+            animation: shoot 12s 6s ease-out infinite;
+        }
+        .shooting-star-3 {
+            top: 70%; left: 10%;
+            transform: rotate(-40deg);
+            animation: shoot 10s 9s ease-out infinite;
+        }
+
+        @keyframes shoot {
+            0% { opacity: 0; transform: rotate(-35deg) translateX(0); }
+            2% { opacity: 1; }
+            8% { opacity: 0; transform: rotate(-35deg) translateX(300px); }
+            100% { opacity: 0; }
+        }
+
+        /* ===== ORBITAL RINGS ===== */
+        .orbit-ring {
+            position: fixed;
+            border: 1px solid rgba(168,85,247,0.04);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            animation: orbit-spin 60s linear infinite;
+        }
+        .orbit-ring-1 {
+            width: 600px; height: 600px;
+            top: -200px; right: -200px;
+        }
+        .orbit-ring-2 {
+            width: 400px; height: 400px;
+            bottom: -100px; left: -100px;
+            animation-duration: 45s;
+            animation-direction: reverse;
+            border-color: rgba(0,229,255,0.04);
+        }
+
+        @keyframes orbit-spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* ===== COMPANION CHARACTERS ===== */
+        .companion {
+            position: fixed;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .companion img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .companion-1 {
+            width: 45px; height: 45px;
+            top: 18%; left: 3%;
+            opacity: 0.12;
+            animation: float-companion 12s ease-in-out infinite;
+            filter: drop-shadow(0 0 6px rgba(168,85,247,0.3));
+        }
+        .companion-2 {
+            width: 40px; height: 40px;
+            top: 62%; right: 5%;
+            opacity: 0.10;
+            animation: float-companion 16s ease-in-out infinite reverse;
+            filter: drop-shadow(0 0 6px rgba(0,229,255,0.3));
+        }
+        .companion-3 {
+            width: 38px; height: 38px;
+            top: 82%; left: 12%;
+            opacity: 0.10;
+            animation: float-companion 14s ease-in-out 2s infinite;
+            filter: drop-shadow(0 0 6px rgba(168,85,247,0.3));
+        }
+        @keyframes float-companion {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-20px) scale(1.1); }
+        }
+
+        /* ===== PAGE LAYOUT ===== */
+        .page-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 640px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            padding-top: 1rem;
+            margin-bottom: 2.5rem;
+        }
+        .logo {
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 1.25rem;
+            border-radius: 24px;
+            box-shadow: 0 8px 32px rgba(168,85,247,0.2), 0 0 0 1px rgba(168,85,247,0.1);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        .logo:hover {
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 12px 40px rgba(168,85,247,0.3), 0 0 0 1px rgba(168,85,247,0.2);
+        }
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+            background: linear-gradient(135deg, #C084FC, #A855F7, #00E5FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+        }
+        .tagline {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.5px;
+        }
+
+        /* ===== CARDS ===== */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 1.25rem;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(168,85,247,0.2), transparent);
+        }
+        .card:hover {
+            border-color: rgba(168,85,247,0.22);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3), 0 0 0 1px rgba(168,85,247,0.08);
+        }
+        .card h2 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 0.85rem;
+            color: var(--accent-primary);
+            letter-spacing: 0.3px;
+        }
+        .card p {
+            line-height: 1.7;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* ===== CONTACT BUTTON ===== */
+        .email-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 1.25rem;
+            padding: 13px 30px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-primary-dark));
+            color: var(--bg-deep);
+            font-weight: 600;
+            font-size: 0.95rem;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(168,85,247,0.25);
+        }
+        .email-link:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(168,85,247,0.4);
+            text-decoration: none;
+        }
+
+        /* ===== FAQ ===== */
+        .faq-item {
+            text-align: left;
+            margin-bottom: 1.4rem;
+            padding-bottom: 1.4rem;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+        .faq-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        .faq-item h3 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.4rem;
+        }
+        .faq-item p {
+            font-size: 0.9rem;
+        }
+
+        /* ===== LINK CARDS ===== */
+        .link-card {
+            padding: 1.25rem 1.5rem;
+            cursor: pointer;
+        }
+        .link-card:hover {
+            border-color: rgba(168,85,247,0.3);
+        }
+        .link-card a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--accent-cyan);
+            text-decoration: none;
+            transition: gap 0.3s ease;
+        }
+        .link-card:hover a {
+            gap: 0.75rem;
+        }
+
+        a {
+            color: var(--accent-cyan);
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            margin-top: 1.5rem;
+            padding-bottom: 2rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 640px) {
+            h1 { font-size: 2.2rem; }
+            .card { padding: 1.5rem; }
+            .planet-sun { width: 110px; height: 110px; }
+            .planet-earth { width: 80px; height: 80px; }
+            .planet-neon { width: 50px; height: 50px; }
+            .planet-lava { width: 40px; height: 40px; }
+            .planet-crystal { width: 30px; height: 30px; }
+            .planet-ice { width: 35px; height: 35px; }
+            .orbit-ring-1 { width: 350px; height: 350px; }
+            .orbit-ring-2 { width: 250px; height: 250px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Parallax Starfield -->
+    <div class="stars-layer">
+        <div class="stars-far" id="stars-far"></div>
+        <div class="stars-mid" id="stars-mid"></div>
+        <div class="stars-near" id="stars-near"></div>
+    </div>
+
+    <!-- Nebula Glows -->
+    <div class="nebula nebula-1"></div>
+    <div class="nebula nebula-2"></div>
+    <div class="nebula nebula-3"></div>
+
+    <!-- Orbital Rings -->
+    <div class="orbit-ring orbit-ring-1"></div>
+    <div class="orbit-ring orbit-ring-2"></div>
+
+    <!-- Floating Planets -->
+    <div class="scene-planet planet-sun"><img src="assets/sun.png" alt=""></div>
+    <div class="scene-planet planet-earth"><img src="assets/earth.png" alt=""></div>
+    <div class="scene-planet planet-neon"><img src="assets/planets/neon.png" alt=""></div>
+    <div class="scene-planet planet-lava"><img src="assets/planets/lava.png" alt=""></div>
+    <div class="scene-planet planet-crystal"><img src="assets/planets/crystal.png" alt=""></div>
+    <div class="scene-planet planet-ice"><img src="assets/planets/ice.png" alt=""></div>
+
+    <!-- Floating Rocket -->
+    <div class="scene-rocket">
+        <img src="assets/rockets/rocket_commander.png" alt="">
+        <div class="rocket-trail"></div>
+    </div>
+
+    <!-- Shooting Stars -->
+    <div class="shooting-star shooting-star-1"></div>
+    <div class="shooting-star shooting-star-2"></div>
+    <div class="shooting-star shooting-star-3"></div>
+
+    <!-- Companions -->
+    <div class="companion companion-1"><img src="assets/companions/companion_phoenix.png" alt=""></div>
+    <div class="companion companion-2"><img src="assets/companions/companion_orbiter.png" alt=""></div>
+    <div class="companion companion-3"><img src="assets/companions/companion_sentinel.png" alt=""></div>
+
+    <!-- Page Content -->
+    <div class="page-wrapper">
+        <div class="container">
+            <div class="hero">
+                <img class="logo" src="assets/logo.png" alt="Orbit Hopper">
+                <h1>Orbit Hopper</h1>
+                <p class="tagline">Contact & Support</p>
+            </div>
+
+            <!-- Screenshot Carousel -->
+            <div class="carousel-section">
+                <div class="carousel-track" id="carousel-track">
+                    <div class="carousel-item"><div class="carousel-frame"><picture><source type="image/webp" srcset="assets/screenshot-1-540w.webp"><img src="assets/screenshot-1.png" alt="Master Gravity" loading="lazy"></picture></div></div>
+                    <div class="carousel-item"><div class="carousel-frame"><picture><source type="image/webp" srcset="assets/screenshot-2-540w.webp"><img src="assets/screenshot-2.png" alt="Explore Secret Worlds" loading="lazy"></picture></div></div>
+                    <div class="carousel-item"><div class="carousel-frame"><picture><source type="image/webp" srcset="assets/screenshot-3-540w.webp"><img src="assets/screenshot-3.png" alt="Reach Higher" loading="lazy"></picture></div></div>
+                    <div class="carousel-item"><div class="carousel-frame"><picture><source type="image/webp" srcset="assets/screenshot-4-540w.webp"><img src="assets/screenshot-4.png" alt="Unlock Your Potential" loading="lazy"></picture></div></div>
+                    <div class="carousel-item"><div class="carousel-frame"><picture><source type="image/webp" srcset="assets/screenshot-5-540w.webp"><img src="assets/screenshot-5.png" alt="Take Risks" loading="lazy"></picture></div></div>
+                    <div class="carousel-item"><div class="carousel-frame"><picture><source type="image/webp" srcset="assets/screenshot-6-540w.webp"><img src="assets/screenshot-6.png" alt="Find New Friends" loading="lazy"></picture></div></div>
+                    <div class="carousel-item"><div class="carousel-frame"><picture><source type="image/webp" srcset="assets/screenshot-7-540w.webp"><img src="assets/screenshot-7.png" alt="Find Your Way Home" loading="lazy"></picture></div></div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Get in Touch</h2>
+                <p>Having an issue or want to share feedback? We'd love to hear from you.</p>
+                <a class="email-link" href="mailto:catalin.lazar.work@gmail.com">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                    catalin.lazar.work@gmail.com
+                </a>
+            </div>
+
+            <div class="card">
+                <h2>FAQ</h2>
+                <div class="faq-item">
+                    <h3>How do I play?</h3>
+                    <p>Hold anywhere on the screen to charge your launch. A trajectory line appears showing where your rocket will go. Release to fly! Land on the next planet to keep going.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Does the game work offline?</h3>
+                    <p>Yes! Orbit Hopper is fully playable without an internet connection.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>How do I turn off sound or haptics?</h3>
+                    <p>You can toggle sound, music, and haptic feedback from the pause or death screen.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Why are there ads?</h3>
+                    <p>Ads help keep Orbit Hopper free for everyone. Rewarded ads are always optional — you choose to watch them for an extra life.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>My game is crashing. What should I do?</h3>
+                    <p>Make sure your app is updated to the latest version. If the issue persists, email us with your device model and OS version.</p>
+                </div>
+            </div>
+
+            <div class="card link-card">
+                <a href="download.html">
+                    Download the Game &rarr;
+                </a>
+            </div>
+
+            <div class="card link-card">
+                <a href="privacy-policy.html">
+                    Privacy Policy &rarr;
+                </a>
+            </div>
+
+            <p class="footer">&copy; 2026 Catalin Lazar. All rights reserved.</p>
+        </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <img id="lightbox-img" src="" alt="Screenshot">
+    </div>
+
+    <script src="carousel.js"></script>
+</body>
+</html>
