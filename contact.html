@@ -531,7 +531,7 @@
             <div class="hero">
                 <img class="logo" src="assets/logo.png" alt="Orbit Hopper">
                 <h1>Orbit Hopper</h1>
-                <p class="tagline">Contact & Support</p>
+                <p class="tagline" data-i18n="contact_title">Contact & Support</p>
             </div>
 
             <!-- Screenshot Carousel -->
@@ -548,55 +548,55 @@
             </div>
 
             <div class="card">
-                <h2>Get in Touch</h2>
-                <p>Having an issue or want to share feedback? We'd love to hear from you.</p>
+                <h2 data-i18n="get_in_touch">Get in Touch</h2>
+                <p data-i18n="get_in_touch_desc">Having an issue or want to share feedback? We'd love to hear from you.</p>
                 <a class="email-link" href="mailto:catalin.lazar.work@gmail.com">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                    Customer Support
+                    <span data-i18n="customer_support">Customer Support</span>
                 </a>
             </div>
 
             <div class="card">
-                <h2>FAQ</h2>
+                <h2 data-i18n="faq">FAQ</h2>
                 <div class="faq-item">
-                    <h3>How do I play?</h3>
-                    <p>Hold anywhere on the screen to charge your launch. A trajectory line appears showing where your rocket will go. Release to fly! Land on the next planet to keep going.</p>
+                    <h3 data-i18n="faq_play_q">How do I play?</h3>
+                    <p data-i18n="faq_play_a">Hold anywhere on the screen to charge your launch. A trajectory line appears showing where your rocket will go. Release to fly! Land on the next planet to keep going.</p>
                 </div>
                 <div class="faq-item">
-                    <h3>Does the game work offline?</h3>
-                    <p>Yes! Orbit Hopper is fully playable without an internet connection.</p>
+                    <h3 data-i18n="faq_offline_q">Does the game work offline?</h3>
+                    <p data-i18n="faq_offline_a">Yes! Orbit Hopper is fully playable without an internet connection.</p>
                 </div>
                 <div class="faq-item">
-                    <h3>How do I turn off sound or haptics?</h3>
-                    <p>You can toggle sound, music, and haptic feedback from the pause or death screen.</p>
+                    <h3 data-i18n="faq_sound_q">How do I turn off sound or haptics?</h3>
+                    <p data-i18n="faq_sound_a">You can toggle sound, music, and haptic feedback from Menu > Settings.</p>
                 </div>
                 <div class="faq-item">
-                    <h3>Why are there ads?</h3>
-                    <p>Ads help keep Orbit Hopper free for everyone. Rewarded ads are always optional — you choose to watch them for an extra life.</p>
+                    <h3 data-i18n="faq_ads_q">Why are there ads?</h3>
+                    <p data-i18n="faq_ads_a">Ads help keep Orbit Hopper free for everyone. Rewarded ads are always optional — you choose to watch them for an extra life.</p>
                 </div>
                 <div class="faq-item">
-                    <h3>Is my progress backed up?</h3>
-                    <p>Yes! Your scores, statistics, and unlocks are automatically backed up to the cloud. If you reinstall the app, your progress will be restored.</p>
+                    <h3 data-i18n="faq_backup_q">Is my progress backed up?</h3>
+                    <p data-i18n="faq_backup_a">Yes! Your scores, statistics, and unlocks are automatically backed up to the cloud. If you reinstall the app, your progress will be restored.</p>
                 </div>
                 <div class="faq-item">
-                    <h3>My game is crashing. What should I do?</h3>
-                    <p>Make sure your app is updated to the latest version. If the issue persists, email us with your device model and OS version.</p>
+                    <h3 data-i18n="faq_crash_q">My game is crashing. What should I do?</h3>
+                    <p data-i18n="faq_crash_a">Make sure your app is updated to the latest version. If the issue persists, email us with your device model and OS version.</p>
                 </div>
             </div>
 
             <div class="card link-card">
                 <a href="download.html">
-                    Download the Game &rarr;
+                    <span data-i18n="download_link">Download the Game</span> &rarr;
                 </a>
             </div>
 
             <div class="card link-card">
                 <a href="privacy-policy.html">
-                    Privacy Policy &rarr;
+                    <span data-i18n="privacy_link">Privacy Policy</span> &rarr;
                 </a>
             </div>
 
-            <p class="footer">&copy; 2026 Catalin Lazar. All rights reserved.</p>
+            <p class="footer" data-i18n="footer">&copy; 2026 Catalin Lazar. All rights reserved.</p>
         </div>
     </div>
 
@@ -605,6 +605,9 @@
         <img id="lightbox-img" src="" alt="Screenshot">
     </div>
 
+    <link rel="stylesheet" href="i18n.css">
+    <script src="translations.js"></script>
     <script src="carousel.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', initI18n);</script>
 </body>
 </html>

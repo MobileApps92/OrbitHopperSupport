@@ -155,6 +155,7 @@
     // ===== LIGHTBOX =====
     var lightbox = document.getElementById('lightbox');
     var lightboxImg = document.getElementById('lightbox-img');
+    var lightboxCaption = document.getElementById('lightbox-caption');
     if (lightbox && lightboxImg) {
         document.addEventListener('click', function(e) {
             // Don't open lightbox if user was dragging
@@ -165,15 +166,22 @@
                 var img = frame.querySelector('img');
                 if (img) {
                     lightboxImg.src = img.src;
+                    var caption = frame.querySelector('.carousel-caption');
+                    if (lightboxCaption) {
+                        lightboxCaption.textContent = caption ? caption.textContent : '';
+                    }
                     lightbox.classList.add('active');
+                    document.body.style.overflow = 'hidden';
                 }
             }
         });
-        lightbox.addEventListener('click', function() {
+        function closeLightbox() {
             lightbox.classList.remove('active');
-        });
+            document.body.style.overflow = '';
+        }
+        lightbox.addEventListener('click', closeLightbox);
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') lightbox.classList.remove('active');
+            if (e.key === 'Escape') closeLightbox();
         });
     }
 })();
