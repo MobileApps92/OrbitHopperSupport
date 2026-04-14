@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Orbit Hopper - OG Image Preview</title>
+    <link rel="stylesheet" href="fonts.css">
+    <script>
+      // Apply export styles BEFORE first paint so headless screenshots don't clip
+      if (location.search.includes('export')) {
+        document.write('<style>html,body{margin:0!important;padding:0!important;background:transparent!important;min-height:auto!important;display:block!important;}.og{border-radius:0!important;box-shadow:none!important;}.note{display:none!important;}</style>');
+      }
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #222;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        body.export {
+            background: transparent;
+            padding: 0;
+            min-height: auto;
+        }
+        body.export .note { display: none; }
+        body.export .og {
+            border-radius: 0;
+            box-shadow: none;
+        }
+        .note {
+            position: fixed;
+            top: 10px; left: 10px;
+            color: #9a9ac0;
+            font-size: 12px;
+            background: rgba(0,0,0,0.6);
+            padding: 6px 10px;
+            border-radius: 6px;
+            z-index: 10;
+        }
+
+        .og {
+            width: 1200px;
+            height: 630px;
+            position: relative;
+            overflow: hidden;
+            background: #000018;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+        }
+
+        /* Nebula layers */
+        .neb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px);
+            pointer-events: none;
+        }
+        .neb-1 {
+            width: 700px; height: 700px;
+            top: -200px; right: -150px;
+            background: radial-gradient(circle, rgba(168,85,247,0.35) 0%, transparent 70%);
+        }
+        .neb-2 {
+            width: 550px; height: 550px;
+            bottom: -180px; left: -120px;
+            background: radial-gradient(circle, rgba(0,229,255,0.25) 0%, transparent 70%);
+        }
+        .neb-3 {
+            width: 400px; height: 400px;
+            top: 30%; left: 40%;
+            background: radial-gradient(circle, rgba(168,85,247,0.12) 0%, transparent 70%);
+        }
+
+        /* Stars */
+        .stars {
+            position: absolute;
+            inset: 0;
+        }
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+        }
+
+        /* Orbit rings */
+        .ring {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .ring-1 {
+            width: 700px; height: 700px;
+            top: -150px; right: -200px;
+            border: 1px solid rgba(168,85,247,0.18);
+        }
+        .ring-2 {
+            width: 500px; height: 500px;
+            bottom: -150px; left: -100px;
+            border: 1px solid rgba(0,229,255,0.14);
+        }
+
+        /* Planets */
+        .planet {
+            position: absolute;
+            pointer-events: none;
+        }
+        .planet img { width: 100%; height: 100%; object-fit: contain; }
+        .planet-sun {
+            width: 280px; height: 280px;
+            top: -60px; right: -50px;
+            opacity: 0.9;
+            filter: drop-shadow(0 0 40px rgba(0,229,255,0.45));
+        }
+        .planet-earth {
+            width: 200px; height: 200px;
+            bottom: -50px; left: -30px;
+            opacity: 0.85;
+            filter: drop-shadow(0 0 30px rgba(255,140,0,0.45));
+        }
+        .planet-neon {
+            width: 90px; height: 90px;
+            top: 70%; right: 12%;
+            opacity: 0.7;
+            filter: drop-shadow(0 0 20px rgba(168,85,247,0.4));
+        }
+
+        /* Rocket */
+        .rocket {
+            position: absolute;
+            top: 28%; right: 18%;
+            width: 90px; height: auto;
+            transform: rotate(35deg);
+            filter: drop-shadow(0 0 20px rgba(168,85,247,0.6));
+            opacity: 0.95;
+        }
+
+        /* Content */
+        .content {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 90px;
+            z-index: 5;
+        }
+
+        .logo-row {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 26px;
+        }
+        .logo {
+            width: 96px;
+            height: 96px;
+            border-radius: 22px;
+            box-shadow: 0 12px 40px rgba(168,85,247,0.4), 0 0 0 1px rgba(168,85,247,0.2);
+        }
+        .brand {
+            font-size: 48px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #C084FC, #A855F7, #00E5FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        h1 {
+            font-size: 72px;
+            font-weight: 700;
+            line-height: 1.05;
+            letter-spacing: -1.5px;
+            color: #fff;
+            margin-bottom: 18px;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            max-width: 780px;
+        }
+        h1 .accent {
+            background: linear-gradient(135deg, #C084FC, #00E5FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tag {
+            font-size: 24px;
+            font-weight: 400;
+            color: #b8b8d8;
+            letter-spacing: 0.3px;
+            max-width: 720px;
+            line-height: 1.35;
+        }
+
+        .pill-row {
+            margin-top: 28px;
+            display: flex;
+            gap: 12px;
+        }
+        .pill {
+            font-size: 17px;
+            font-weight: 600;
+            color: #fff;
+            padding: 9px 20px;
+            border-radius: 999px;
+            background: rgba(168,85,247,0.18);
+            border: 1px solid rgba(168,85,247,0.4);
+            backdrop-filter: blur(8px);
+        }
+        .pill.cyan {
+            background: rgba(0,229,255,0.12);
+            border-color: rgba(0,229,255,0.35);
+        }
+    </style>
+</head>
+<body>
+    <div class="note">Preview at 1200 × 630 (social og:image spec). Screenshot the purple card below.</div>
+
+    <div class="og" id="og">
+        <div class="neb neb-1"></div>
+        <div class="neb neb-2"></div>
+        <div class="neb neb-3"></div>
+
+        <div class="ring ring-1"></div>
+        <div class="ring ring-2"></div>
+
+        <div class="stars" id="stars"></div>
+
+        <div class="planet planet-sun"><img src="assets/earth.png" alt=""></div>
+        <div class="planet planet-earth"><img src="assets/sun.png" alt=""></div>
+        <div class="planet planet-neon"><img src="assets/planets/neon.png" alt=""></div>
+
+        <img class="rocket" src="assets/rockets/rocket_commander.png" alt="">
+
+        <div class="content">
+            <div class="logo-row">
+                <img class="logo" src="assets/logo.png" alt="Orbit Hopper">
+                <div class="brand">Orbit Hopper</div>
+            </div>
+            <h1>Master <span class="accent">Gravity.</span><br>Hop the Orbit.</h1>
+            <p class="tag">Physics-based arcade adventure across 11 themed worlds. Free on iOS and Android.</p>
+            <div class="pill-row">
+                <div class="pill">🚀 11 Worlds</div>
+                <div class="pill cyan">🛰️ Rockets & Companions</div>
+                <div class="pill">⭐ Play Offline</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        if (new URLSearchParams(location.search).has('export')) {
+            document.documentElement.classList.add('export-html');
+            document.body.classList.add('export');
+        }
+        const stars = document.getElementById('stars');
+        const frag = document.createDocumentFragment();
+        for (let i = 0; i < 120; i++) {
+            const s = document.createElement('div');
+            s.className = 'star';
+            const size = Math.random() < 0.2 ? 2 : Math.random() < 0.6 ? 1.5 : 1;
+            s.style.width = size + 'px';
+            s.style.height = size + 'px';
+            s.style.left = Math.random() * 100 + '%';
+            s.style.top = Math.random() * 100 + '%';
+            s.style.opacity = 0.3 + Math.random() * 0.6;
+            if (Math.random() < 0.15) {
+                s.style.background = Math.random() < 0.5 ? '#A855F7' : '#00E5FF';
+                s.style.boxShadow = `0 0 4px currentColor`;
+            }
+            frag.appendChild(s);
+        }
+        stars.appendChild(frag);
+    </script>
+</body>
+</html>
