@@ -46,12 +46,12 @@ const TRANSLATIONS = {
     download_hint_2: 'On desktop, scan the QR code below with your phone.',
     ss_1: 'Master Gravity',
     ss_2: 'Explore Secret Worlds',
-    ss_3: 'Complete Events',
-    ss_4: 'Find Your Way Home',
-    ss_5: 'Find New Friends',
-    ss_6: 'Unlock Your Potential',
-    ss_7: 'Take Risks',
-    ss_8: 'Reach Higher',
+    ss_3: 'Train in Academy',
+    ss_4: 'Complete Events',
+    ss_5: 'Unlock Your Potential',
+    ss_6: 'Take Risks',
+    ss_7: 'Find New Friends',
+    ss_8: 'Find Your Way Home',
 
     // PRIVACY POLICY PAGE
     pp_title: 'Privacy Policy',
@@ -121,12 +121,12 @@ const TRANSLATIONS = {
     download_hint_2: 'Pe desktop, scanează codul QR de mai jos cu telefonul.',
     ss_1: 'Stăpânește Gravitația',
     ss_2: 'Explorează Lumi Secrete',
-    ss_3: 'Completează Evenimente',
-    ss_4: 'Găsește Drumul Acasă',
-    ss_5: 'Găsește Noi Prieteni',
-    ss_6: 'Deblochează-ți Potențialul',
-    ss_7: 'Asumă-ți Riscuri',
-    ss_8: 'Țintește Mai Sus',
+    ss_3: 'Antrenează-te în Academie',
+    ss_4: 'Completează Evenimente',
+    ss_5: 'Deblochează-ți Potențialul',
+    ss_6: 'Asumă-ți Riscuri',
+    ss_7: 'Găsește Noi Prieteni',
+    ss_8: 'Găsește Drumul Acasă',
     pp_title: 'Politica de Confidențialitate',
     pp_effective: 'Data intrării în vigoare: 22 Martie 2026',
     pp_overview_h: 'Prezentare Generală',
@@ -194,12 +194,12 @@ const TRANSLATIONS = {
     download_hint_2: 'En ordenador, escanea el código QR de abajo con tu teléfono.',
     ss_1: 'Domina la Gravedad',
     ss_2: 'Explora Mundos Secretos',
-    ss_3: 'Completa Eventos',
-    ss_4: 'Encuentra el Camino a Casa',
-    ss_5: 'Encuentra Nuevos Amigos',
-    ss_6: 'Desbloquea Tu Potencial',
-    ss_7: 'Arriésgate',
-    ss_8: 'Apunta Más Alto',
+    ss_3: 'Entrena en la Academia',
+    ss_4: 'Completa Eventos',
+    ss_5: 'Desbloquea Tu Potencial',
+    ss_6: 'Arriésgate',
+    ss_7: 'Encuentra Nuevos Amigos',
+    ss_8: 'Encuentra el Camino a Casa',
     pp_title: 'Política de Privacidad',
     pp_effective: 'Fecha de vigencia: 22 de Marzo de 2026',
     pp_overview_h: 'Descripción General',
@@ -267,12 +267,12 @@ const TRANSLATIONS = {
     download_hint_2: 'Sur ordinateur, scannez le code QR ci-dessous avec votre téléphone.',
     ss_1: 'Maîtrise la Gravité',
     ss_2: 'Explore des Mondes Secrets',
-    ss_3: 'Complète les Événements',
-    ss_4: 'Retrouve le Chemin',
-    ss_5: 'Trouve de Nouveaux Amis',
-    ss_6: 'Libère Ton Potentiel',
-    ss_7: 'Prends des Risques',
-    ss_8: 'Vise Plus Haut',
+    ss_3: "Entraîne-toi à l'Académie",
+    ss_4: 'Complète les Événements',
+    ss_5: 'Libère Ton Potentiel',
+    ss_6: 'Prends des Risques',
+    ss_7: 'Trouve de Nouveaux Amis',
+    ss_8: 'Retrouve le Chemin',
     pp_title: 'Politique de Confidentialité',
     pp_effective: "Date d'entrée en vigueur : 22 Mars 2026",
     pp_overview_h: 'Aperçu',
@@ -340,12 +340,12 @@ const TRANSLATIONS = {
     download_hint_2: 'No computador, digitalize o código QR abaixo com o telemóvel.',
     ss_1: 'Domina a Gravidade',
     ss_2: 'Explora Mundos Secretos',
-    ss_3: 'Completa Eventos',
-    ss_4: 'Encontra o Caminho de Casa',
-    ss_5: 'Encontra Novos Amigos',
-    ss_6: 'Liberta o Teu Potencial',
-    ss_7: 'Arrisca-te',
-    ss_8: 'Mira Mais Alto',
+    ss_3: 'Treina na Academia',
+    ss_4: 'Completa Eventos',
+    ss_5: 'Liberta o Teu Potencial',
+    ss_6: 'Arrisca-te',
+    ss_7: 'Encontra Novos Amigos',
+    ss_8: 'Encontra o Caminho de Casa',
     pp_title: 'Política de Privacidade',
     pp_effective: 'Data de vigência: 22 de Março de 2026',
     pp_overview_h: 'Visão Geral',
@@ -413,12 +413,12 @@ const TRANSLATIONS = {
     download_hint_2: 'На компьютере отсканируйте QR-код ниже с телефона.',
     ss_1: 'Покори Гравитацию',
     ss_2: 'Исследуй Тайные Миры',
-    ss_3: 'Выполни События',
-    ss_4: 'Найди Путь Домой',
-    ss_5: 'Найди Новых Друзей',
-    ss_6: 'Раскрой Свой Потенциал',
-    ss_7: 'Рискуй',
-    ss_8: 'Цельсь Выше',
+    ss_3: 'Тренируйся в Академии',
+    ss_4: 'Выполни События',
+    ss_5: 'Раскрой Свой Потенциал',
+    ss_6: 'Рискуй',
+    ss_7: 'Найди Новых Друзей',
+    ss_8: 'Найди Путь Домой',
     pp_title: 'Политика Конфиденциальности',
     pp_effective: 'Дата вступления в силу: 22 Марта 2026',
     pp_overview_h: 'Обзор',
@@ -553,19 +553,23 @@ function initI18n() {
 }
 
 /**
- * Appends the current lang param to all internal links so navigation preserves language.
+ * Carries all current URL parameters to internal links so navigation preserves them.
  */
 function preserveLangInLinks(lang) {
-  if (lang === 'en') return; // default language, no param needed
+  const currentParams = new URLSearchParams(window.location.search);
+  if (lang !== 'en') currentParams.set('lang', lang);
+  if (currentParams.size === 0) return;
   document.querySelectorAll('a[href]').forEach(a => {
     const href = a.getAttribute('href');
     // Only patch local .html links (skip external, mailto, anchors, etc.)
     if (!href || href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('#') || href.startsWith('?')) return;
     if (!href.endsWith('.html') && !href.includes('.html?')) return;
     const url = new URL(href, window.location.origin + window.location.pathname);
-    if (!url.searchParams.has('lang')) {
-      url.searchParams.set('lang', lang);
-      a.setAttribute('href', url.pathname.split('/').pop() + url.search);
-    }
+    currentParams.forEach((value, key) => {
+      if (!url.searchParams.has(key)) {
+        url.searchParams.set(key, value);
+      }
+    });
+    a.setAttribute('href', url.pathname.split('/').pop() + url.search);
   });
 }
