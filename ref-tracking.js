@@ -1,16 +1,5 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
 import { getAnalytics, logEvent } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-analytics.js";
-
-const firebaseConfig = {
-    apiKey: "AIzaSyCpVgr8OXnBsSNkVr-8EAzdR47m72KcMXc",
-    authDomain: "orbithop-d8b1b.firebaseapp.com",
-    databaseURL: "https://orbithop-d8b1b-default-rtdb.europe-west1.firebasedatabase.app",
-    projectId: "orbithop-d8b1b",
-    storageBucket: "orbithop-d8b1b.firebasestorage.app",
-    messagingSenderId: "1018327336962",
-    appId: "1:1018327336962:web:07b3653b9f594409a37f1b",
-    measurementId: "G-VW2MQJ5ZLT"
-};
+import { app } from "./firebase-config.js";
 
 const REF_MAP = {
     // https://orbit-hopper.com/download.html?lang=ro&ref=x8k2m9
@@ -115,7 +104,6 @@ const REF_MAP = {
     "z7q3r9": "Test",
 };
 
-const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
 const ref = new URLSearchParams(window.location.search).get('ref');

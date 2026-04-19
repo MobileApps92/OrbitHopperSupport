@@ -38,6 +38,7 @@ const TRANSLATIONS = {
     download_title: 'Download the Game',
     landing_tagline: 'Master gravity. Hop the orbit.',
     redirecting: 'Redirecting you to the store...',
+    unavailable_banner: "🚧 Orbit Hopper isn't live on the stores yet — stay tuned for launch!",
     download_desc: 'Master gravity across 11 themed worlds, unlock rockets and companions, discover secret zones, and compete on global leaderboards. Free to play.',
     download_on: 'Download on',
     get_it_on: 'Get it on',
@@ -113,6 +114,7 @@ const TRANSLATIONS = {
     download_title: 'Descarcă Jocul',
     landing_tagline: 'Stăpânește gravitația. Sari pe orbită.',
     redirecting: 'Redirecționare către magazin...',
+    unavailable_banner: '🚧 Orbit Hopper nu este încă disponibil în magazine — urmărește lansarea!',
     download_desc: 'Stăpânește gravitația în 11 lumi tematice, deblochează rachete și companioni, descoperă zone secrete și concurează în clasamente globale. Gratuit.',
     download_on: 'Descarcă de pe',
     get_it_on: 'Disponibil pe',
@@ -186,6 +188,7 @@ const TRANSLATIONS = {
     download_title: 'Descargar el Juego',
     landing_tagline: 'Domina la gravedad. Salta a la órbita.',
     redirecting: 'Redirigiendo a la tienda...',
+    unavailable_banner: '🚧 Orbit Hopper aún no está disponible en las tiendas — ¡espera el lanzamiento!',
     download_desc: 'Domina la gravedad en 11 mundos temáticos, desbloquea cohetes y compañeros, descubre zonas secretas y compite en clasificaciones globales. Gratis.',
     download_on: 'Descargar en',
     get_it_on: 'Consíguelo en',
@@ -259,6 +262,7 @@ const TRANSLATIONS = {
     download_title: 'Télécharger le Jeu',
     landing_tagline: 'Maîtrisez la gravité. Sautez en orbite.',
     redirecting: 'Redirection vers le magasin...',
+    unavailable_banner: "🚧 Orbit Hopper n'est pas encore disponible sur les stores — restez connectés pour le lancement !",
     download_desc: 'Maîtrisez la gravité à travers 11 mondes thématiques, débloquez des fusées et des compagnons, découvrez des zones secrètes et rivalisez dans les classements mondiaux. Gratuit.',
     download_on: 'Télécharger sur',
     get_it_on: 'Disponible sur',
@@ -332,6 +336,7 @@ const TRANSLATIONS = {
     download_title: 'Descarregar o Jogo',
     landing_tagline: 'Domine a gravidade. Salte para a órbita.',
     redirecting: 'A redirecionar para a loja...',
+    unavailable_banner: '🚧 Orbit Hopper ainda não está disponível nas lojas — fique atento ao lançamento!',
     download_desc: 'Domine a gravidade em 11 mundos temáticos, desbloqueie foguetes e companheiros, descubra zonas secretas e compita em classificações globais. Gratuito.',
     download_on: 'Descarregar na',
     get_it_on: 'Disponível no',
@@ -405,6 +410,7 @@ const TRANSLATIONS = {
     download_title: 'Скачать Игру',
     landing_tagline: 'Освой гравитацию. Прыгай по орбите.',
     redirecting: 'Перенаправление в магазин...',
+    unavailable_banner: '🚧 Orbit Hopper ещё не в магазинах — следите за запуском!',
     download_desc: 'Освойте гравитацию в 11 тематических мирах, разблокируйте ракеты и спутников, откройте секретные зоны и соревнуйтесь в мировых рейтингах. Бесплатно.',
     download_on: 'Скачать в',
     get_it_on: 'Доступно в',
@@ -551,6 +557,9 @@ function initI18n() {
   buildLanguageSwitcher(lang);
   preserveLangInLinks(lang);
 }
+
+// Expose for module scripts that need to dynamically swap translated text.
+window.TRANSLATIONS = TRANSLATIONS;
 
 /**
  * Carries all current URL parameters to internal links so navigation preserves them.
