@@ -139,11 +139,11 @@ const REF_MAP = {
     // https://orbit-hopper.com/download.html?lang=ro&ref=m6n9q3
     "m6n9q3": "Ciucu Andreea",
     // https://orbit-hopper.com/download.html?lang=ro&ref=v4x7z1
-    "v4x7z1": "Name 19",
+    "v4x7z1": "Adrian Vasile",
     // https://orbit-hopper.com/download.html?lang=ro&ref=b8d2g5
-    "b8d2g5": "Name 20",
+    "b8d2g5": "Emil Mihai",
     // https://orbit-hopper.com/download.html?lang=ro&ref=h9j3l6
-    "h9j3l6": "Name 21",
+    "h9j3l6": "Florin Robert",
     // https://orbit-hopper.com/download.html?lang=ro&ref=n1p4s7
     "n1p4s7": "Name 22",
     // https://orbit-hopper.com/download.html?lang=ro&ref=r5u8w2
