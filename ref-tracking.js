@@ -141,67 +141,67 @@ const REF_MAP = {
     // https://orbit-hopper.com/download.html?lang=ro&ref=v4x7z1
     "v4x7z1": "Adrian Vasile",
     // https://orbit-hopper.com/download.html?lang=ro&ref=b8d2g5
-    "b8d2g5": "Emil Mihai",
+    "b8d2g5": "Bratu Eduard",
     // https://orbit-hopper.com/download.html?lang=ro&ref=h9j3l6
     "h9j3l6": "Florin Robert",
     // https://orbit-hopper.com/download.html?lang=ro&ref=n1p4s7
-    "n1p4s7": "Name 22",
+    "n1p4s7": "Adina Manea",
     // https://orbit-hopper.com/download.html?lang=ro&ref=r5u8w2
-    "r5u8w2": "Name 23",
+    "r5u8w2": "Alex Costin",
     // https://orbit-hopper.com/download.html?lang=ro&ref=e6f9k3
-    "e6f9k3": "Name 24",
+    "e6f9k3": "Octavian H.",
     // https://orbit-hopper.com/download.html?lang=ro&ref=t1v4y7
-    "t1v4y7": "Name 25",
+    "t1v4y7": "Mihalela Co.",
     // https://orbit-hopper.com/download.html?lang=ro&ref=a8c2d5
-    "a8c2d5": "Name 26",
+    "a8c2d5": "Alin Co.",
     // https://orbit-hopper.com/download.html?lang=ro&ref=m9p3r6
-    "m9p3r6": "Name 27",
+    "m9p3r6": "Olga Mariana",
     // https://orbit-hopper.com/download.html?lang=ro&ref=j4l7n1
-    "j4l7n1": "Name 28",
+    "j4l7n1": "Florin Pam.",
     // https://orbit-hopper.com/download.html?lang=ro&ref=w5y8b2
-    "w5y8b2": "Name 29",
+    "w5y8b2": "Vladut M. C.",
     // https://orbit-hopper.com/download.html?lang=ro&ref=f3h6j9
-    "f3h6j9": "Name 30",
+    "f3h6j9": "Florentina B.",
     // https://orbit-hopper.com/download.html?lang=ro&ref=q7s1u4
-    "q7s1u4": "Name 31",
+    "q7s1u4": "Mishter Curly",
     // https://orbit-hopper.com/download.html?lang=ro&ref=d8g2k5
-    "d8g2k5": "Name 32",
+    "d8g2k5": "Ricardo",
     // https://orbit-hopper.com/download.html?lang=ro&ref=p6r9t3
-    "p6r9t3": "Name 33",
+    "p6r9t3": "Lysa",
     // https://orbit-hopper.com/download.html?lang=ro&ref=v1x4z7
-    "v1x4z7": "Name 34",
+    "v1x4z7": "Ioana K.",
     // https://orbit-hopper.com/download.html?lang=ro&ref=c5e8h2
-    "c5e8h2": "Name 35",
+    "c5e8h2": "Moise S.",
     // https://orbit-hopper.com/download.html?lang=ro&ref=n4q7s2
-    "n4q7s2": "Name 36",
+    "n4q7s2": "Paraschiv V.",
     // https://orbit-hopper.com/download.html?lang=ro&ref=b9d3f6
-    "b9d3f6": "Name 37",
+    "b9d3f6": "Catalin Srn",
     // https://orbit-hopper.com/download.html?lang=ro&ref=l2m5p8
-    "l2m5p8": "Name 38",
+    "l2m5p8": "Mihalache Roxana",
     // https://orbit-hopper.com/download.html?lang=ro&ref=u7w1y4
-    "u7w1y4": "Name 39",
+    "u7w1y4": "Petre Doru",
     // https://orbit-hopper.com/download.html?lang=ro&ref=g6j9k3
-    "g6j9k3": "Name 40",
+    "g6j9k3": "Anca Gabriela",
     // https://orbit-hopper.com/download.html?lang=ro&ref=r8t2v5
-    "r8t2v5": "Name 41",
+    "r8t2v5": "Ana Lucan",
     // https://orbit-hopper.com/download.html?lang=ro&ref=a1c4e7
-    "a1c4e7": "Name 42",
+    "a1c4e7": "Anka Gabriela",
     // https://orbit-hopper.com/download.html?lang=ro&ref=h3k6n9
-    "h3k6n9": "Name 43",
+    "h3k6n9": "Victor Ion.",
     // https://orbit-hopper.com/download.html?lang=ro&ref=p5s8u2
-    "p5s8u2": "Name 44",
+    "p5s8u2": "Madalina S.",
     // https://orbit-hopper.com/download.html?lang=ro&ref=d4f7j1
-    "d4f7j1": "Name 45",
+    "d4f7j1": "Victor I.",
     // https://orbit-hopper.com/download.html?lang=ro&ref=m8q3t6
-    "m8q3t6": "Name 46",
+    "m8q3t6": "Toto",
     // https://orbit-hopper.com/download.html?lang=ro&ref=w2y5b8
-    "w2y5b8": "Name 47",
+    "w2y5b8": "Iuliana O.",
     // https://orbit-hopper.com/download.html?lang=ro&ref=n9p1r4
-    "n9p1r4": "Name 48",
+    "n9p1r4": "Chinezu",
     // https://orbit-hopper.com/download.html?lang=ro&ref=v3x6z9
-    "v3x6z9": "Name 49",
+    "v3x6z9": "Andra Stanciu",
     // https://orbit-hopper.com/download.html?lang=ro&ref=c7e1g4
-    "c7e1g4": "Name 50",
+    "c7e1g4": "Tudor Melania",
 };
 
 const analytics = getAnalytics(app);
