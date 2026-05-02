@@ -105,39 +105,39 @@ const REF_MAP = {
     // https://orbit-hopper.com/download.html?lang=ro&ref=e3r6t9
     "e3r6t9": "Alina Petcu.",
     // https://orbit-hopper.com/download.html?lang=ro&ref=h2k5n8
-    "h2k5n8": "Name 02",
+    "h2k5n8": "Alex Bra.",
     // https://orbit-hopper.com/download.html?lang=ro&ref=m4p7s1
-    "m4p7s1": "Name 03",
+    "m4p7s1": "Alexandra Rot.",
     // https://orbit-hopper.com/download.html?lang=ro&ref=w9b2c5
-    "w9b2c5": "Name 04",
+    "w9b2c5": "Alexa",
     // https://orbit-hopper.com/download.html?lang=ro&ref=f6g3j8
-    "f6g3j8": "Name 05",
+    "f6g3j8": "Andrei Rares",
     // https://orbit-hopper.com/download.html?lang=ro&ref=l1n4q7
-    "l1n4q7": "Name 06",
+    "l1n4q7": "Anca Nazare",
     // https://orbit-hopper.com/download.html?lang=ro&ref=t5v8x2
-    "t5v8x2": "Name 07",
+    "t5v8x2": "Vladimir",
     // https://orbit-hopper.com/download.html?lang=ro&ref=d9h3k6
-    "d9h3k6": "Name 08",
+    "d9h3k6": "Bogdan Tenis",
     // https://orbit-hopper.com/download.html?lang=ro&ref=r2m5p8
-    "r2m5p8": "Name 09",
+    "r2m5p8": "Dana Sophie",
     // https://orbit-hopper.com/download.html?lang=ro&ref=b7c1f4
-    "b7c1f4": "Name 10",
+    "b7c1f4": "Bunica Dom.",
     // https://orbit-hopper.com/download.html?lang=ro&ref=y6z9a3
-    "y6z9a3": "Name 11",
+    "y6z9a3": "Bogdan Florescu",
     // https://orbit-hopper.com/download.html?lang=ro&ref=j5n8w1
-    "j5n8w1": "Name 12",
+    "j5n8w1": "Adi Tenis",
     // https://orbit-hopper.com/download.html?lang=ro&ref=q4s7v2
-    "q4s7v2": "Name 13",
+    "q4s7v2": "George Sophie",
     // https://orbit-hopper.com/download.html?lang=ro&ref=g8h2k5
-    "g8h2k5": "Name 14",
+    "g8h2k5": "Tata Eva",
     // https://orbit-hopper.com/download.html?lang=ro&ref=u3w6y9
-    "u3w6y9": "Name 15",
+    "u3w6y9": "Sorin Tenis",
     // https://orbit-hopper.com/download.html?lang=ro&ref=c1d4f7
-    "c1d4f7": "Name 16",
+    "c1d4f7": "Alex Gigel",
     // https://orbit-hopper.com/download.html?lang=ro&ref=p2r5t8
-    "p2r5t8": "Name 17",
+    "p2r5t8": "Iulian Et. 1",
     // https://orbit-hopper.com/download.html?lang=ro&ref=m6n9q3
-    "m6n9q3": "Name 18",
+    "m6n9q3": "Ciucu Andreea",
     // https://orbit-hopper.com/download.html?lang=ro&ref=v4x7z1
     "v4x7z1": "Name 19",
     // https://orbit-hopper.com/download.html?lang=ro&ref=b8d2g5
