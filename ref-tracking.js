@@ -37,9 +37,9 @@ const REF_MAP = {
     // https://orbit-hopper.com/download.html?lang=ro&ref=n7x1z5
     "n7x1z5": "Gheorghe C.",
     // https://orbit-hopper.com/download.html?lang=ro&ref=g3b6d9
-    "g3b6d9": "Georgiana N.",
+    "g3b6d9": "Alex N.",
     // https://orbit-hopper.com/download.html?lang=ro&ref=m8f2h4
-    "m8f2h4": "Alex N.",
+    "m8f2h4": "Georgiana N.",
     // https://orbit-hopper.com/download.html?lang=ro&ref=s1j5k7
     "s1j5k7": "Catalin C.",
     // https://orbit-hopper.com/download.html?lang=ro&ref=u9n3p6
@@ -61,7 +61,7 @@ const REF_MAP = {
     // https://orbit-hopper.com/download.html?lang=ro&ref=z8k3m5
     "z8k3m5": "Constantin D.",
     // https://orbit-hopper.com/download.html?lang=ro&ref=b7n1p9
-    "b7n1p9": "Mihaela P.",
+    "b7n1p9": "Mihaela Pop",
     // https://orbit-hopper.com/download.html?lang=ro&ref=d5q4r6
     "d5q4r6": "Catalin B.",
     // https://orbit-hopper.com/download.html?lang=ro&ref=g9s8t2
@@ -87,13 +87,13 @@ const REF_MAP = {
     // https://orbit-hopper.com/download.html?lang=ro&ref=f2t7v3
     "f2t7v3": "Cosmin B.",
     // https://orbit-hopper.com/download.html?lang=ro&ref=h5w1x9
-    "h5w1x9": "Robert",
+    "h5w1x9": "Cristian O.",
     // https://orbit-hopper.com/download.html?lang=ro&ref=k8z4b6
-    "k8z4b6": "Teodora",
+    "k8z4b6": "Ines",
     // https://orbit-hopper.com/download.html?lang=ro&ref=n2c7d1
-    "n2c7d1": "Nicolae",
+    "n2c7d1": "Andra R.",
     // https://orbit-hopper.com/download.html?lang=ro&ref=q5f9g3
-    "q5f9g3": "Carmen",
+    "q5f9g3": "Bibi",
     // https://orbit-hopper.com/download.html?lang=ro&ref=s8h4j6
     "s8h4j6": "Pavel",
     // https://orbit-hopper.com/download.html?lang=ro&ref=v1k7m2
