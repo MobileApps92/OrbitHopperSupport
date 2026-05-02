@@ -191,7 +191,7 @@ const REF_MAP = {
     // https://orbit-hopper.com/download.html?lang=ro&ref=p5s8u2
     "p5s8u2": "Madalina S.",
     // https://orbit-hopper.com/download.html?lang=ro&ref=d4f7j1
-    "d4f7j1": "Victor I.",
+    "d4f7j1": "Letitia I.",
     // https://orbit-hopper.com/download.html?lang=ro&ref=m8q3t6
     "m8q3t6": "Toto",
     // https://orbit-hopper.com/download.html?lang=ro&ref=w2y5b8
