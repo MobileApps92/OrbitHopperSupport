@@ -95,11 +95,11 @@ const REF_MAP = {
     // https://orbit-hopper.com/download.html?lang=ro&ref=q5f9g3
     "q5f9g3": "Bibi",
     // https://orbit-hopper.com/download.html?lang=ro&ref=s8h4j6
-    "s8h4j6": "Pavel",
+    "s8h4j6": "Ioana Mocanu",
     // https://orbit-hopper.com/download.html?lang=ro&ref=v1k7m2
-    "v1k7m2": "Mirela",
+    "v1k7m2": "Alex Mih.",
     // https://orbit-hopper.com/download.html?lang=ro&ref=x4n8p5
-    "x4n8p5": "Victor",
+    "x4n8p5": "Cristian C.",
     // https://orbit-hopper.com/download.html?lang=ro&ref=z7q3r9
     "z7q3r9": "Test",
 };
