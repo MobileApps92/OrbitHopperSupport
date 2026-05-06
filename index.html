@@ -425,6 +425,22 @@
             font-weight: 500;
         }
 
+        /* ===== UNAVAILABLE TAGLINE (swapped in when Remote Config is_available = false) ===== */
+        .tagline.unavailable {
+            display: inline-block;
+            background: rgba(255, 200, 80, 0.06);
+            border: 1px solid rgba(255, 200, 80, 0.25);
+            border-radius: 12px;
+            padding: 0.8rem 1.25rem;
+            color: #ffd480;
+            font-size: 0.95rem;
+            font-weight: 500;
+            letter-spacing: 0;
+            line-height: 1.5;
+            max-width: 92%;
+            margin-top: 0.35rem;
+        }
+
         /* ===== STORE BUTTONS ===== */
         .store-buttons {
             display: flex;
@@ -569,6 +585,10 @@
             </div>
 
             <div class="card">
+                <p id="redirect-status" class="redirect-msg">
+                    <span class="spinner"></span> <span data-i18n="redirecting">Redirecting you to the store...</span>
+                </p>
+
                 <p style="margin-bottom: 1.5rem;" data-i18n="download_desc">Master gravity across 11 themed worlds, unlock rockets and companions, discover secret zones, and compete on global leaderboards. Free to play.</p>
 
                 <div class="store-buttons">
@@ -600,9 +620,43 @@
         </div>
     </div>
 
-    <script>
-        document.getElementById('btn-appstore').href = 'https://apps.apple.com/app/id6759779021';
-        document.getElementById('btn-playstore').href = 'https://play.google.com/store/apps/details?id=com.orbithop.orbit_hop';
+    <script type="module">
+        import { getIsAvailable } from './firebase-config.js';
+
+        const APP_STORE_URL = 'https://apps.apple.com/app/id6759779021';
+        const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.orbithop.orbit_hop';
+
+        const ua = navigator.userAgent || navigator.vendor || window.opera;
+        const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+        const isAndroid = /android/i.test(ua);
+
+        document.getElementById('btn-appstore').href = APP_STORE_URL;
+        document.getElementById('btn-playstore').href = PLAY_STORE_URL;
+
+        function redirectToStore(url) {
+            const status = document.getElementById('redirect-status');
+            status.style.display = 'block';
+            setTimeout(() => { window.location.href = url; }, 1500);
+            // Hide the indicator after redirect (user may return via back button)
+            setTimeout(() => { status.style.display = 'none'; }, 3000);
+        }
+
+        const isAvailable = await getIsAvailable();
+
+        if (!isAvailable) {
+            const tagline = document.querySelector('.tagline');
+            if (tagline) {
+                const lang = document.documentElement.lang || 'en';
+                const dict = (window.TRANSLATIONS && window.TRANSLATIONS[lang]) || (window.TRANSLATIONS && window.TRANSLATIONS.en) || {};
+                tagline.textContent = dict.unavailable_banner || tagline.textContent;
+                tagline.setAttribute('data-i18n', 'unavailable_banner');
+                tagline.classList.add('unavailable');
+            }
+        } else if (isIOS && APP_STORE_URL !== '#') {
+            redirectToStore(APP_STORE_URL);
+        } else if (isAndroid && PLAY_STORE_URL !== '#') {
+            redirectToStore(PLAY_STORE_URL);
+        }
     </script>
 
     <!-- Lightbox -->
