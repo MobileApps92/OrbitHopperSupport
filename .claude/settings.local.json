@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 /Users/lazarcatalin/Desktop/Projects/Personal/OrbitHopperSupport/_bmad/scripts/resolve_customization.py --skill /Users/lazarcatalin/Desktop/Projects/Personal/OrbitHopperSupport/.claude/skills/gds-agent-game-designer --key agent)",
+      "Bash(ls ~/Downloads/assets/ 2>/dev/null)",
+      "Read(//Users/lazarcatalin/Downloads/assets/**)",
+      "Bash(file ~/Downloads/assets/*.png)",
+      "Bash(mkdir -p /Users/lazarcatalin/Desktop/Projects/Personal/OrbitHopperSupport/assets/social)",
+      "Bash(cp ~/Downloads/assets/youtube.png ~/Downloads/assets/facebook.png ~/Downloads/assets/instagram.png ~/Downloads/assets/tiktok.png /Users/lazarcatalin/Desktop/Projects/Personal/OrbitHopperSupport/assets/social/)"
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+/* ===== SOCIAL LINKS (shared across pages) ===== */
+.social-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    margin: 1.5rem 0 0.25rem;
+    padding: 4px 0;
+}
+.social-links a {
+    display: inline-block;
+    line-height: 0;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    text-decoration: none;
+}
+.social-links a:hover,
+.social-links a:focus-visible {
+    transform: translateY(-3px) scale(1.08);
+    filter: drop-shadow(0 4px 12px rgba(168, 85, 247, 0.4));
+    text-decoration: none;
+    outline: none;
+}
+.social-links img {
+    display: block;
+    width: 36px;
+    height: 36px;
+}
+@media (max-width: 640px) {
+    .social-links { gap: 1rem; }
+    .social-links img { width: 34px; height: 34px; }
+}
