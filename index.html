@@ -659,6 +659,9 @@
         const ua = navigator.userAgent || navigator.vendor || window.opera;
         const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
         const isAndroid = /android/i.test(ua);
+        // Link-preview crawlers (YouTube, Facebook, Google) often send a mobile UA; redirecting
+        // them makes the link show the store's favicon and title instead of ours.
+        const isBot = /bot|crawl|spider|slurp|facebookexternalhit|Google-|preview/i.test(ua);
 
         document.getElementById('btn-appstore').href = APP_STORE_URL;
         document.getElementById('btn-playstore').href = PLAY_STORE_URL;
@@ -682,6 +685,8 @@
                 tagline.setAttribute('data-i18n', 'unavailable_banner');
                 tagline.classList.add('unavailable');
             }
+        } else if (isBot) {
+            // Leave crawlers on the page so previews use our own icon and meta tags.
         } else if (isIOS && APP_STORE_URL !== '#') {
             redirectToStore(APP_STORE_URL);
         } else if (isAndroid && PLAY_STORE_URL !== '#') {
