@@ -2,6 +2,16 @@ import { getAnalytics, logEvent } from "https://www.gstatic.com/firebasejs/11.6.
 import { app } from "./firebase-config.js";
 
 const REF_MAP = {
+    // Social profile links (bio / about / channel description)
+    // https://orbit-hopper.com/download.html?ref=ig
+    "ig": "Instagram",
+    // https://orbit-hopper.com/download.html?ref=tt
+    "tt": "TikTok",
+    // https://orbit-hopper.com/download.html?ref=yt
+    "yt": "YouTube",
+    // https://orbit-hopper.com/download.html?ref=fb
+    "fb": "Facebook",
+
     // https://orbit-hopper.com/download.html?lang=ro&ref=x8k2m9
     "x8k2m9": "Alexandru B.",
     // https://orbit-hopper.com/download.html?lang=ro&ref=q3w7p4
