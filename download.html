@@ -641,12 +641,12 @@
     <script type="module">
         import { getIsAvailable } from './firebase-config.js';
 
-        const APP_STORE_BASE = 'https://apps.apple.com/app/id6759779021';
+        const APP_STORE_BASE = 'https://apps.apple.com/app/apple-store/id6759779021';
         const PLAY_STORE_BASE = 'https://play.google.com/store/apps/details?id=com.orbithop.orbit_hop';
 
         // App Store Connect -> App Analytics -> Acquisition -> Campaigns: the "pt" value
         // of any generated campaign link. Without it Apple ignores the campaign token.
-        const APP_STORE_PROVIDER_TOKEN = '';
+        const APP_STORE_PROVIDER_TOKEN = '128597415';
 
         // Forward ?ref= to the stores so installs (not just visits) are attributed:
         // Play Console / Firebase read utm_* from "referrer", App Store Connect reads "ct".
